@@ -133,3 +133,10 @@ npm run dev -- import-mcp-router --input F:/agent_uac/mcp-servers-2026-02-12.jso
 - 移除顶栏 Agent 选择芯片，计划/同步始终对全部 Agent 生效（per-MCP 矩阵已覆盖选择需求）。
 - 受影响文件：`src/types.ts`、`src/schema.ts`、`src/adapters/vscode.ts`[NEW]、`src/adapters/antigravity.ts`[NEW]、`src/adapters/index.ts`、`src/api/server.ts`、`web/src/App.tsx`
 - 对用户的影响：可统一管理 5 个 Agent（codex/gemini/claude/vscode/antigravity）的 MCP 配置。
+
+### 2026-02-13 (GitHub 发布初始化)
+
+- 使用 `github-mcp` 创建公开仓库 `mmm1h/agent-uac`，并完成本地目录首次 Git 初始化与远程推送。
+- 更新忽略规则，避免将本地运行缓存、日志与构建产物提交到公开仓库（`.agent/`、`.tmp/`、`.playwright-mcp/`、`src-tauri/target/`）。
+- 受影响文件：`.gitignore`、`AGENTS.md`
+- 对用户的影响：仓库已可直接公开协作，同时降低误上传本地敏感/冗余文件的风险。
