@@ -1,0 +1,63 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug API",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/api/server.ts",
+            "runtimeArgs": [
+                "--import",
+                "tsx"
+            ],
+            "skipFiles": [
+                "<node_internals>/**",
+                "${workspaceFolder}/node_modules/**"
+            ],
+            "env": {
+                "UAC_API_PORT": "4310"
+            },
+            "console": "integratedTerminal",
+            "restart": true,
+            "preLaunchTask": "dev:web",
+            "postDebugTask": ""
+        },
+        {
+            "name": "Debug Web (Chrome)",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://127.0.0.1:5173",
+            "webRoot": "${workspaceFolder}/web",
+            "sourceMaps": true,
+            "sourceMapPathOverrides": {
+                "webpack:///src/*": "${webRoot}/src/*"
+            },
+            "preLaunchTask": "dev:web"
+        },
+        {
+            "name": "Run MCP Server",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/mcp-server.ts",
+            "runtimeArgs": [
+                "--import",
+                "tsx"
+            ],
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "console": "integratedTerminal"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Full Stack Dev",
+            "configurations": [
+                "Debug API",
+                "Debug Web (Chrome)"
+            ],
+            "stopAll": true,
+            "preLaunchTask": "dev:web"
+        }
+    ]
+}
